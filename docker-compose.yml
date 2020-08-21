@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  project-www:
+    build:
+      context: .docker/www
+      dockerfile: Dockerfile
+    container_name: project-www
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html:cached
+    networks:
+      - project
+  project-mysql:
+    image: mysql:5.7
+    container_name: project-mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - project-mysqldata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=project
+      - TZ=Pacific/Auckland
+    networks:
+      - project
+  project-redis:
+    image: redis:alpine
+    container_name: project-redis
+    volumes:
+      - project-redisdata:/data
+    networks:
+      - project
+  project-mailhog:
+    image: mailhog/mailhog:latest
+    container_name: project-mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    networks:
+      - project
+
+networks:
+  project:
+    driver: "bridge"
+
+volumes:
+  project-mysqldata:
+    driver: "local"
+  project-redisdata:
+    driver: "local"
+
