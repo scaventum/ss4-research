@@ -1,0 +1,6 @@
+---
+Name: extensions
+---
+SS4Research\ModelAdmins\HeroAdmin:
+    extensions:
+        - Heyday\ModelAdminFilter\FilterExtension

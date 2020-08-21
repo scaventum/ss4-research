@@ -29,4 +29,61 @@ class HeroAdmin extends ModelAdmin
      * @var string
      */
     private static $menu_icon_class = 'font-icon-happy';
+
+    /**
+     * @var string
+     */
+    public static $model_admin_filter = 'font-icon-happy';
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getList()
+    {
+        $list = parent::getList();
+        $list = $this->getFilteredList($list);
+
+        return $list;
+    }
+
+    /**
+     * List of ModelAdminFilter custom fields
+     */
+    public function extraFilterFields(): array
+    {
+        return [
+            [
+                'fieldName' => 'BirthDate',
+                'fieldType' => 'dateRange',
+                'options' => [
+                    'beginTitle' => 'Birth Date From',
+                    'endTitle' => 'Birth Date To',
+                ],
+            ],
+            [
+                'fieldName' => 'Created',
+                'fieldType' => 'dateTimeRange',
+                'options' => [
+                    'beginTitle' => 'Created From',
+                    'endTitle' => 'Created To',
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * List of fields filtered by keyword
+     */
+    public function keywordSearchFilter(): array
+    {
+        return [
+            'fieldsToMatch' => [
+                'Name' => 'PartialMatch',
+                'Occupation' => 'PartialMatch',
+            ],
+            'options' => [
+                'title' => 'Search Exactly',
+            ],
+        ];
+    }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4287a6dc5c701d32153e80628fef24bf",
+    "content-hash": "80171a8a99369b2dd601bb561998fc4a",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -415,6 +415,42 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
+        },
+        {
+            "name": "heyday/model-admin-filter",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/heyday/model-admin-filter.git",
+                "reference": "b9266f3014a8bbdd929aeb877e2d9902a0f9f703"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/heyday/model-admin-filter/zipball/b9266f3014a8bbdd929aeb877e2d9902a0f9f703",
+                "reference": "b9266f3014a8bbdd929aeb877e2d9902a0f9f703",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/framework": "^4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Heyday\\ModelAdminFilter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan DJ",
+                    "email": "ryan.djoenaidi@wundermanthompson.com"
+                }
+            ],
+            "description": "Custom filters collection for Silverstripe Model Admin GridField",
+            "time": "2020-08-14T04:02:01+00:00"
         },
         {
             "name": "intervention/image",
