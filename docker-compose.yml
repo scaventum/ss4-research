@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  project-www:
+  ss4-research-www:
     build:
       context: .docker/www
       dockerfile: Dockerfile
@@ -13,7 +13,7 @@ services:
       - .:/var/www/html:cached
     networks:
       - project
-  project-mysql:
+  ss4-research-mysql:
     image: mysql:5.7
     container_name: project-mysql
     ports:
@@ -26,14 +26,14 @@ services:
       - TZ=Pacific/Auckland
     networks:
       - project
-  project-redis:
+  ss4-research-redis:
     image: redis:alpine
     container_name: project-redis
     volumes:
       - project-redisdata:/data
     networks:
       - project
-  project-mailhog:
+  ss4-research-mailhog:
     image: mailhog/mailhog:latest
     container_name: project-mailhog
     ports:
@@ -47,8 +47,8 @@ networks:
     driver: "bridge"
 
 volumes:
-  project-mysqldata:
+  ss4-research-mysqldata:
     driver: "local"
-  project-redisdata:
+  ss4-research-redisdata:
     driver: "local"
 
