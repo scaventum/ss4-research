@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "80171a8a99369b2dd601bb561998fc4a",
+    "content-hash": "b342180409f367c5e7e650204ee5bda9",
     "packages": [
         {
             "name": "bramus/ansi-php",
@@ -418,16 +418,16 @@
         },
         {
             "name": "heyday/model-admin-filter",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heyday/model-admin-filter.git",
-                "reference": "b9266f3014a8bbdd929aeb877e2d9902a0f9f703"
+                "reference": "63f7058fe579c6d8f8bcbe1a069c92ac39fbeb2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heyday/model-admin-filter/zipball/b9266f3014a8bbdd929aeb877e2d9902a0f9f703",
-                "reference": "b9266f3014a8bbdd929aeb877e2d9902a0f9f703",
+                "url": "https://api.github.com/repos/heyday/model-admin-filter/zipball/63f7058fe579c6d8f8bcbe1a069c92ac39fbeb2b",
+                "reference": "63f7058fe579c6d8f8bcbe1a069c92ac39fbeb2b",
                 "shasum": ""
             },
             "require": {
@@ -450,7 +450,7 @@
                 }
             ],
             "description": "Custom filters collection for Silverstripe Model Admin GridField",
-            "time": "2020-08-14T04:02:01+00:00"
+            "time": "2020-08-21T03:38:21+00:00"
         },
         {
             "name": "intervention/image",
