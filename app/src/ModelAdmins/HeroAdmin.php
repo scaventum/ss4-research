@@ -60,6 +60,14 @@ class HeroAdmin extends ModelAdmin
                     'endTitle' => 'Birth Date To',
                 ],
             ],
+            [
+                'fieldName' => 'BaseAttackDamage',
+                'fieldType' => 'numericRange',
+                'options' => [
+                    'beginTitle' => 'Base Attack Damage From',
+                    'endTitle' => 'Base Attack Damage To',
+                ],
+            ],
         ];
     }
 
