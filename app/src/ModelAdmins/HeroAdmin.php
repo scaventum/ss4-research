@@ -60,14 +60,6 @@ class HeroAdmin extends ModelAdmin
                     'endTitle' => 'Birth Date To',
                 ],
             ],
-            [
-                'fieldName' => 'Created',
-                'fieldType' => 'dateTimeRange',
-                'options' => [
-                    'beginTitle' => 'Created From',
-                    'endTitle' => 'Created To',
-                ],
-            ],
         ];
     }
 
@@ -82,8 +74,16 @@ class HeroAdmin extends ModelAdmin
                 'Occupation' => 'PartialMatch',
             ],
             'options' => [
-                'title' => 'Search Exactly',
+                'title' => 'Search by Keyword',
             ],
         ];
+    }
+
+    /**
+     * Hide default filters of data objects
+     */
+    public function hideDefaultFilters(): bool
+    {
+        return true;
     }
 }
