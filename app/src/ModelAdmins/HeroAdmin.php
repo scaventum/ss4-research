@@ -3,7 +3,9 @@
 namespace SS4Research\ModelAdmins;
 
 use SilverStripe\Admin\ModelAdmin;
+use SS4Research\DataObjects\Affiliation;
 use SS4Research\DataObjects\Hero;
+use SS4Research\DataObjects\Role;
 
 class HeroAdmin extends ModelAdmin
 {
@@ -11,7 +13,9 @@ class HeroAdmin extends ModelAdmin
      * @var array
      */
     private static $managed_models = [
-        Hero::class
+        Hero::class,
+        Affiliation::class,
+        Role::class,
     ];
 
     /**
@@ -41,6 +45,7 @@ class HeroAdmin extends ModelAdmin
     public function getList()
     {
         $list = parent::getList();
+
         $list = $this->getFilteredList($list);
 
         return $list;
@@ -51,24 +56,30 @@ class HeroAdmin extends ModelAdmin
      */
     public function extraFilterFields(): array
     {
-        return [
-            [
-                'fieldName' => 'BirthDate',
-                'fieldType' => 'dateRange',
-                'options' => [
-                    'beginTitle' => 'Birth Date From',
-                    'endTitle' => 'Birth Date To',
+        $fields = [];
+
+        if ($this->modelClass === Hero::class) {
+            $fields =  [
+                [
+                    'fieldName' => 'BirthDate',
+                    'fieldType' => 'dateRange',
+                    'options' => [
+                        'beginTitle' => 'Birth Date From',
+                        'endTitle' => 'Birth Date To',
+                    ],
                 ],
-            ],
-            [
-                'fieldName' => 'BaseAttackDamage',
-                'fieldType' => 'numericRange',
-                'options' => [
-                    'beginTitle' => 'Base Attack Damage From',
-                    'endTitle' => 'Base Attack Damage To',
+                [
+                    'fieldName' => 'BaseAttackDamage',
+                    'fieldType' => 'numericRange',
+                    'options' => [
+                        'beginTitle' => 'Base Attack Damage From',
+                        'endTitle' => 'Base Attack Damage To',
+                    ],
                 ],
-            ],
-        ];
+            ];
+        }
+
+        return $fields;
     }
 
     /**
@@ -76,15 +87,39 @@ class HeroAdmin extends ModelAdmin
      */
     public function keywordSearchFilter(): array
     {
-        return [
-            'fieldsToMatch' => [
-                'Name' => 'PartialMatch',
-                'Occupation' => 'PartialMatch',
-            ],
-            'options' => [
-                'title' => 'Search by Keyword',
-            ],
-        ];
+        $field = [];
+
+        if ($this->modelClass === Hero::class) {
+            $field = [
+                'fieldsToMatch' => [
+                    'Name' => 'PartialMatch',
+                    'Occupation' => 'PartialMatch',
+                ],
+                'options' => [
+                    'title' => 'Search by Keyword',
+                ],
+            ];
+        } else if ($this->modelClass === Affiliation::class) {
+            $field = [
+                'fieldsToMatch' => [
+                    'Name' => 'PartialMatch',
+                ],
+                'options' => [
+                    'title' => 'Search by Keyword',
+                ],
+            ];
+        } else if ($this->modelClass === Role::class) {
+            $field = [
+                'fieldsToMatch' => [
+                    'Name' => 'PartialMatch',
+                ],
+                'options' => [
+                    'title' => 'Search by Keyword',
+                ],
+            ];
+        }
+
+        return $field;
     }
 
     /**
